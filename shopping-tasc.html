@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>List</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <style>
+        header {
+      margin: 30px;
+    }
+    h2 {
+      margin: 0 auto;
+    }
+
+    div.form-group {
+      display: flex;
+    }
+
+    div.wind {
+      margin: 18px;
+    }
+    input {
+      font-size: medium;
+      background-color: #cdff3b82
+    }
+    body {
+      background-color: #50f95691;
+      margin: 15px 30px;
+    }
+
+    .shop {
+      background-color: #ffeb3bd6;
+    }
+
+    li {
+      width: 150px;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 5px;
+      text-transform: capitalize;
+    }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h2>Shopping list</h2>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="Text">
+                <h3>Thing:</h3>
+            </label>
+            <div class="wind">
+                <input type="text" class="form-control" id="list" placeholder="Enter what you need" name="item">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" id="btn">Submit</button>
+            </div>
+            <ul class="shopping-list"></ul>
+        </div>
+    </header>
+    <script>
+    document.getElementById('btn').onclick = function() {
+        let newDivList = document.createElement('li');
+        newDivList.onclick = swetchTextDekor;
+        newDivList.innerText = document.getElementById('list').value;
+        document.querySelector('.shopping-list').appendChild(newDivList);
+        document.getElementById('list').value = '';
+
+        let deliter = document.createElement('button');
+        deliter.innerText = 'x';
+        newDivList.appendChild(deliter);
+        newDivList.classList.add('shop');
+        deliter.classList.add('outt');
+        deliter.onclick = delString;
+
+    }
+
+    function delString(e) {
+        document.querySelector('.shopping-list').removeChild(e.target.parentElement)
+    }
+
+    function swetchTextDekor(e) {
+        let b = e.target.style;
+        if (b.textDecoration === '') {
+            b.textDecoration = 'line-through'
+        } else {
+            b.textDecoration = ''
+        }
+    }
+
+
+
+
+    //let deliter = document.createElement('span');
+    //deliter.innerText = 'x';
+
+    // var delText = document.createTextNode('x');
+    // deliter.appendChild(delText);
+    //let element = document.getElementAll('li');
+    // element.appendChild(delite);
+
+    //let closeBtn =document getElementAll('li');
+    // let i;
+
+    // for(i = 0; i < closeBtn.length; i++) {
+    //  closeBtn[i].addEventListener("clic", function() {
+    //   this.parentElement.style.distpay = 'none';
+    //  });
+    //}
+
+
+    //document.getElementById('btn').onclick = function(){
+    //   document.getElementById('btn').value = 
+    // }
+    </script>
+</body>
+
+</html>
